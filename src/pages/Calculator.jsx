@@ -8,10 +8,6 @@ import ResultCard from "../components/ResultCard";
 
 export default function Calculator() {
   const [subjects, setSubjects] = useState(() => {
-    const saved = localStorage.getItem("vsgpa_current_subjects");
-    if (saved) {
-      try { return JSON.parse(saved); } catch (e) { }
-    }
     return [
       { id: 1, name: "", credits: "", gradePoints: "" },
       { id: 2, name: "", credits: "", gradePoints: "" },
@@ -68,8 +64,6 @@ export default function Calculator() {
       setSgpa(0);
     }
     
-    // Auto-save current subjects input to local storage
-    localStorage.setItem("vsgpa_current_subjects", JSON.stringify(subjects));
   }, [subjects]);
 
   const hasInvalidInput = subjects.some((sub) => {
