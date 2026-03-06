@@ -32,9 +32,7 @@ Calculate your Semester Grade Point Average instantly with a beautiful glassmorp
 
 The SGPA is calculated using the formula:
 
-\[
-SGPA = \frac{\sum (C_i \times P_i)}{\sum C_i}
-\]
+SGPA = Σ (Ci × Pi) / Σ Ci
 
 Where:
 
