@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Anta', ui-sans-serif, system-ui, sans-serif;
+  
+  --color-border: hsl(0 0% 20%);
+  --color-input: hsl(0 0% 20%);
+  --color-ring: hsl(0 0% 83.1%);
+  --color-background: hsl(0 0% 0%);
+  --color-foreground: hsl(0 0% 98%);
+
+  --color-primary: hsl(0 0% 98%);
+  --color-primary-foreground: hsl(0 0% 9%);
+
+  --color-secondary: hsl(0 0% 15%);
+  --color-secondary-foreground: hsl(0 0% 98%);
+
+  --color-destructive: hsl(0 62.8% 30.6%);
+  --color-destructive-foreground: hsl(0 0% 98%);
+
+  --color-muted: hsl(0 0% 15%);
+  --color-muted-foreground: hsl(0 0% 64%);
+
+  --color-accent: hsl(0 0% 20%);
+  --color-accent-foreground: hsl(0 0% 98%);
+
+  --color-popover: hsl(0 0% 5%);
+  --color-popover-foreground: hsl(0 0% 98%);
+
+  --color-card: hsl(0 0% 10%);
+  --color-card-foreground: hsl(0 0% 98%);
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+}
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+  }
+
+  * {
+    border-color: var(--color-border);
+  }
+  
+  .anta-regular {
+    font-family: "Anta", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    background: radial-gradient(circle at 50% -20%, #1a1a1a, #000);
+  }
+
+  /* Hide number input spinners for cleaner UI */
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+}
+
+/* Custom Glassmorphism Classes */
+@utility glass {
+  background-color: rgb(255 255 255 / 0.05);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgb(255 255 255 / 0.1);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+}
+
+@utility glass-panel {
+  background-color: rgb(0 0 0 / 0.4);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgb(255 255 255 / 0.1);
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-panel::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+@utility glass-input {
+  background-color: rgb(255 255 255 / 0.05);
+  border-color: rgb(255 255 255 / 0.1);
+  color: white;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.glass-input::placeholder {
+  color: rgb(156 163 175);
+}
+.glass-input:focus {
+  border-color: rgb(255 255 255 / 0.3);
+  --tw-ring-color: rgb(255 255 255 / 0.3);
+}
